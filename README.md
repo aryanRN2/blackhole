@@ -4,6 +4,8 @@ A premium, highly interactive web application designed and built by **Aryan** to
 
 This project integrates modern frontend animation libraries, high-performance visual layers, and a responsive glassmorphic dashboard mockup simulating space-time notes and an interactive connection graph. All visual links and interactive call-to-actions are mapped to the live [Aryan's Neural Graph](https://me-aryan.vercel.app/neural-graph).
 
+**🔗 Live Website:** [https://blackhole-by-aryan.netlify.app](https://blackhole-by-aryan.netlify.app)
+
 ---
 
 ## 📸 Screenshots
