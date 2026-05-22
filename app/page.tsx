@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div
       ref={scrollContainerRef}
-      className="relative w-full min-h-[300vh] bg-[#050505] text-white overflow-hidden"
+      className="relative w-full min-h-[300vh] text-white overflow-hidden"
     >
       {/* Scroll handler and canvas background */}
       <LenisScroll />

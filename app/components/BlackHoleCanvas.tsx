@@ -50,6 +50,10 @@ export default function BlackHoleCanvas({
       drawY = 0;
     }
 
+    // Set high-quality image smoothing
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
     currentFrameIndexRef.current = index;
@@ -67,6 +71,7 @@ export default function BlackHoleCanvas({
 
       if (loadedCount === totalFrames) {
         imagesRef.current = tempImages;
+        console.log("All frames loaded successfully. Preloading complete.");
         setLoaded(true);
       }
     };
@@ -74,12 +79,12 @@ export default function BlackHoleCanvas({
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       const frameNum = String(i).padStart(3, "0");
-      img.src = `/blackhole/ezgif-frame-${frameNum}.jpg`;
       img.onload = handleImageLoad;
       img.onerror = () => {
         console.error(`Failed to load frame ${frameNum}`);
         handleImageLoad(); // Still count to avoid hanging
       };
+      img.src = `/blackhole/ezgif-frame-${frameNum}.jpg`;
       tempImages.push(img);
     }
   }, []);
@@ -119,18 +124,19 @@ export default function BlackHoleCanvas({
     const tween = gsap.to(animationObj, {
       frame: totalFrames - 1,
       snap: "frame",
+      ease: "none",
       scrollTrigger: {
         trigger: triggerEl,
         start: "top top",
         end: "bottom bottom",
         scrub: 0.5,
-        onUpdate: () => {
-          const currentFrame = Math.min(
-            totalFrames - 1,
-            Math.max(0, Math.floor(animationObj.frame))
-          );
-          renderFrame(currentFrame);
-        },
+      },
+      onUpdate: () => {
+        const currentFrame = Math.min(
+          totalFrames - 1,
+          Math.max(0, Math.floor(animationObj.frame))
+        );
+        renderFrame(currentFrame);
       },
     });
 
@@ -172,8 +178,31 @@ export default function BlackHoleCanvas({
       {/* Canvas background */}
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 -z-10 h-screen w-screen object-cover bg-[#050505] pointer-events-none transition-opacity duration-1000"
-        style={{ opacity: loaded ? 0.7 : 0 }}
+        className="fixed inset-0 z-0 h-screen w-screen object-cover bg-[#050505] pointer-events-none transition-opacity duration-1000"
+        style={{
+          opacity: loaded ? 0.65 : 0,
+          filter: "blur(2.5px) contrast(1.15) saturate(1.1)",
+        }}
+      />
+
+      {/* Radial overlay to blend canvas edges and hide low-res JPEG artifacts */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, transparent 15%, rgba(5, 5, 5, 0.45) 45%, rgba(5, 5, 5, 0.85) 75%, #050505 95%)",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 1s ease-in-out",
+        }}
+      />
+
+      {/* Subtle organic film grain texture to prevent banding and mask pixelation */}
+      <div
+        className="fixed inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          opacity: loaded ? 0.035 : 0,
+          transition: "opacity 1s ease-in-out",
+        }}
       />
     </>
   );
