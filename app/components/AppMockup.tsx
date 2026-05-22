@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import { 
   Search, 
   FileText, 
@@ -20,6 +21,7 @@ import {
 export default function AppMockup() {
   const mockupRef = useRef<HTMLDivElement>(null);
   const [activeNode, setActiveNode] = useState<string | null>("Black Holes");
+  const targetUrl = "https://me-aryan.vercel.app/neural-graph";
 
   const nodes = [
     { id: "Black Holes", x: 120, y: 110, size: 10, color: "#a855f7" },
@@ -76,17 +78,17 @@ export default function AppMockup() {
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Window Chrome Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-black/40 border-b border-white/[0.05]">
+        <Link href={targetUrl} target="_blank" className="flex items-center justify-between px-4 py-3 bg-black/40 border-b border-white/[0.05] hover:bg-white/[0.02] transition-colors block">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
             <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
             <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
           </div>
           <div className="text-xs font-mono text-white/30 tracking-widest uppercase">
-            reflect.app/physics-notes
+            aryan-cosmos.app/blackhole-graph
           </div>
           <div className="w-12" /> {/* spacer */}
-        </div>
+        </Link>
 
         {/* Inner App Interface */}
         <div className="flex h-[550px] bg-black/60 text-white/90">
@@ -94,40 +96,40 @@ export default function AppMockup() {
           <aside className="w-56 border-r border-white/[0.05] bg-black/30 flex flex-col justify-between p-4 hidden sm:flex">
             <div>
               {/* Profile */}
-              <div className="flex items-center gap-2 mb-6 px-1">
+              <Link href={targetUrl} target="_blank" className="flex items-center gap-2 mb-6 px-1 hover:opacity-85 transition-opacity">
                 <div className="h-6 w-6 rounded-full bg-accent-purple/20 flex items-center justify-center border border-accent-purple/30">
                   <User className="h-3.5 w-3.5 text-accent-purple" />
                 </div>
                 <span className="text-xs font-semibold text-white/80">
-                  Dr. Stephen H.
+                  Aryan Maurya
                 </span>
-              </div>
+              </Link>
 
               {/* Search */}
-              <div className="relative mb-6">
+              <Link href={targetUrl} target="_blank" className="relative block mb-6">
                 <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-white/30" />
                 <input
                   type="text"
                   placeholder="Quick Search (⌘K)"
-                  className="w-full bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] text-xs py-2 pl-9 pr-3 rounded-md outline-none text-white/60 focus:text-white transition-all duration-200"
+                  className="w-full bg-white/[0.03] border border-white/[0.08] hover:border-white/[0.15] text-xs py-2 pl-9 pr-3 rounded-md outline-none text-white/60 focus:text-white transition-all duration-200 cursor-pointer"
                   readOnly
                 />
-              </div>
+              </Link>
 
               {/* Main Links */}
               <div className="flex flex-col gap-1 mb-6">
-                <button className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs bg-white/[0.05] text-white font-medium transition-colors">
+                <Link href={targetUrl} target="_blank" className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs bg-white/[0.05] text-white font-medium transition-colors hover:bg-white/[0.08]">
                   <FileText className="h-4 w-4 text-accent-purple" />
-                  Notes
-                </button>
-                <button className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.02] transition-colors">
+                  Space-time Notes
+                </Link>
+                <Link href={targetUrl} target="_blank" className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.02] transition-colors">
                   <Calendar className="h-4 w-4" />
-                  Daily Notes
-                </button>
-                <button className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.02] transition-colors">
+                  Timeline Log
+                </Link>
+                <Link href={targetUrl} target="_blank" className="flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-white/50 hover:text-white/80 hover:bg-white/[0.02] transition-colors">
                   <Network className="h-4 w-4" />
-                  Graph View
-                </button>
+                  Neural Graph
+                </Link>
               </div>
 
               {/* Folders/Tags */}
@@ -136,41 +138,41 @@ export default function AppMockup() {
                   Tags
                 </span>
                 <div className="flex flex-col gap-1">
-                  <span className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
+                  <Link href={targetUrl} target="_blank" className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
                     <Hash className="h-3.5 w-3.5 text-accent-pink" />
                     physics
-                  </span>
-                  <span className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
+                  </Link>
+                  <Link href={targetUrl} target="_blank" className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
                     <Hash className="h-3.5 w-3.5 text-accent-blue" />
                     cosmology
-                  </span>
-                  <span className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
+                  </Link>
+                  <Link href={targetUrl} target="_blank" className="flex items-center gap-2 px-2 py-1 rounded-md text-xs text-white/50 hover:bg-white/[0.02] cursor-pointer">
                     <Hash className="h-3.5 w-3.5 text-accent-cyan" />
-                    ideas
-                  </span>
+                    singularities
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Bottom Actions */}
             <div className="flex flex-col gap-2">
-              <button className="flex items-center gap-2 text-xs text-white/40 hover:text-white/70">
+              <Link href={targetUrl} target="_blank" className="flex items-center gap-2 text-xs text-white/40 hover:text-white/70">
                 <Settings className="h-4 w-4" />
-                Settings
-              </button>
+                Graph Settings
+              </Link>
             </div>
           </aside>
 
           {/* Main Editor Pane */}
           <main className="flex-1 flex flex-col p-6 overflow-y-auto">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-1.5 text-xs text-white/30 mb-6">
-              <span>All Notes</span>
+            <Link href={targetUrl} target="_blank" className="flex items-center gap-1.5 text-xs text-white/30 mb-6 hover:text-white/50 transition-colors">
+              <span>All Logs</span>
               <ChevronRight className="h-3 w-3" />
               <span>Cosmology</span>
               <ChevronRight className="h-3 w-3" />
               <span className="text-white/60">Black Hole Information Paradox</span>
-            </div>
+            </Link>
 
             {/* Document Title */}
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-4">
@@ -180,13 +182,29 @@ export default function AppMockup() {
             {/* Body Editor */}
             <div className="space-y-4 text-sm text-white/75 leading-relaxed font-sans max-w-2xl">
               <p>
-                In general relativity, a <span className="bg-accent-purple/10 text-accent-purple px-1.5 py-0.5 rounded border border-accent-purple/20 cursor-pointer font-medium">[[Black Hole]]</span> is defined by three quantities: mass, charge, and angular momentum.
+                In general relativity, a{" "}
+                <Link href={targetUrl} target="_blank" className="bg-accent-purple/10 text-accent-purple px-1.5 py-0.5 rounded border border-accent-purple/20 cursor-pointer font-medium hover:bg-accent-purple/20 transition-colors">
+                  [[Black Hole]]
+                </Link>{" "}
+                is defined by three quantities: mass, charge, and angular momentum.
               </p>
               <p>
-                However, when quantum mechanics is integrated, Stephen Hawking showed that black holes emit thermal radiation, now known as <span className="bg-accent-pink/10 text-accent-pink px-1.5 py-0.5 rounded border border-accent-pink/20 cursor-pointer font-medium">[[Hawking Radiation]]</span>. This leads to the famous <span className="bg-accent-blue/10 text-accent-blue px-1.5 py-0.5 rounded border border-accent-blue/20 cursor-pointer font-medium">[[Information Paradox]]</span>: if a black hole evaporates, what happens to the physical information stored inside it?
+                However, when quantum mechanics is integrated, Stephen Hawking showed that black holes emit thermal radiation, now known as{" "}
+                <Link href={targetUrl} target="_blank" className="bg-accent-pink/10 text-accent-pink px-1.5 py-0.5 rounded border border-accent-pink/20 cursor-pointer font-medium hover:bg-accent-pink/20 transition-colors">
+                  [[Hawking Radiation]]
+                </Link>{" "}
+                This leads to the famous{" "}
+                <Link href={targetUrl} target="_blank" className="bg-accent-blue/10 text-accent-blue px-1.5 py-0.5 rounded border border-accent-blue/20 cursor-pointer font-medium hover:bg-accent-blue/20 transition-colors">
+                  [[Information Paradox]]
+                </Link>
+                : if a black hole evaporates, what happens to the physical information stored inside it?
               </p>
               <p>
-                This boundary lies at the intersection of <span className="bg-accent-cyan/10 text-accent-cyan px-1.5 py-0.5 rounded border border-accent-cyan/20 cursor-pointer font-medium">[[Quantum Mechanics]]</span> and Einstein's Theory of Gravity.
+                This boundary lies at the intersection of{" "}
+                <Link href={targetUrl} target="_blank" className="bg-accent-cyan/10 text-accent-cyan px-1.5 py-0.5 rounded border border-accent-cyan/20 cursor-pointer font-medium hover:bg-accent-cyan/20 transition-colors">
+                  [[Quantum Mechanics]]
+                </Link>{" "}
+                and Einstein's Theory of Gravity.
               </p>
             </div>
           </main>
@@ -243,11 +261,13 @@ export default function AppMockup() {
                 {nodes.map((node) => {
                   const isActive = activeNode === node.id;
                   return (
-                    <div
+                    <Link
                       key={node.id}
+                      href={targetUrl}
+                      target="_blank"
                       className="absolute cursor-pointer flex flex-col items-center group"
                       style={{ left: `${node.x}px`, top: `${node.y}px`, transform: "translate(-50%, -50%)" }}
-                      onClick={() => setActiveNode(node.id)}
+                      onMouseEnter={() => setActiveNode(node.id)}
                     >
                       {/* Outer Ring */}
                       <div
@@ -281,7 +301,7 @@ export default function AppMockup() {
                       >
                         {node.id}
                       </span>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -289,7 +309,7 @@ export default function AppMockup() {
               {/* Tag/Backlinks stats */}
               <div className="mt-4 space-y-3">
                 <div className="text-xs">
-                  <span className="text-white/40 block mb-1">Active Backlinks</span>
+                  <span className="text-white/40 block mb-1">Active Node Info</span>
                   <span className="font-semibold text-white/90 text-sm">{activeNode}</span>
                 </div>
                 <div className="text-[11px] text-white/50 leading-relaxed bg-white/[0.02] border border-white/[0.05] rounded-lg p-2.5">
@@ -302,10 +322,15 @@ export default function AppMockup() {
               </div>
             </div>
 
-            {/* Backlink footer */}
-            <div className="text-[10px] text-white/30 flex items-center justify-between border-t border-white/[0.05] pt-3">
-              <span>5 nodes indexed</span>
-              <span>12 connections</span>
+            {/* Backlink footer & CTA */}
+            <div className="border-t border-white/[0.05] pt-3 flex flex-col gap-2">
+              <Link href={targetUrl} target="_blank" className="text-xs text-center py-2 bg-accent-purple/20 hover:bg-accent-purple/35 text-white font-medium rounded-lg transition-colors border border-accent-purple/30">
+                Launch Graph Interface
+              </Link>
+              <div className="text-[9px] text-white/30 flex items-center justify-between">
+                <span>5 nodes mapped</span>
+                <span>12 connections</span>
+              </div>
             </div>
           </div>
         </div>

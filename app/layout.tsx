@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reflect - Think better with a networked notebook",
-  description: "Reflect is a private, lightning-fast note-taking app designed to mirror the way your brain works. Bi-directional links, AI-assisted writing, and web-first design.",
+  title: "BlackHole - Explore Black Holes with Aryan",
+  description: "An interactive cosmos visualizer and black hole physics explainer created by Aryan.",
 };
 
 export default function RootLayout({
